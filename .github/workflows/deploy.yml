@@ -31,7 +31,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a set of commands using the runners shell
+      - uses: typst-community/setup-typst@v5
+
       - name: build page
         run: cargo run
 

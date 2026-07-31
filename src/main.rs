@@ -125,7 +125,8 @@ fn main() -> Result<()> {
                     .to_str()
                     .with_context(|| format!("failed to make {output:?} a str"))?,
             ])
-            .status()?;
+            .status()
+            .context("failed to invoke typst")?;
 
         let page_link = page
             .directory
@@ -170,7 +171,7 @@ fn main() -> Result<()> {
 
     eprintln!("writing output/blog/index.html output");
 
-    fs::write("output/blog/index.html", blog_page)?;
+    fs::write("output/blog/index.html", blog_page).context("writing blog index page")?;
 
     Ok(())
 }
