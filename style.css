@@ -122,3 +122,7 @@ html {
     display: inline-block;
 }
 
+.content math {
+    display: inline-block;
+    white-space: nowrap;
+}
