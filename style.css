@@ -1,0 +1,124 @@
+body {
+   overscroll-behavior-y: none;   
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+html {
+    background-color: #24273a;
+    color: #cad3f5;
+}
+
+.opener {
+    height: 100vh;
+    width: 100vw;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    display: flex;
+    background-color: #1e2030;
+}
+
+.opener > div > p {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.opener > div > h1 {
+    margin: 0;
+}
+
+.opener > * {
+    animation-direction: forward;
+    animation-duration: 0.5s;
+    animation-name: slide-in;
+    animation-timing-function: ease-out;
+}
+
+.links > a {
+    color: #1e2030;
+    background-color: #c6a0f6;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    border-radius: 50vh;
+    text-decoration: none;
+    filter: drop-shadow(5px 5px #181926);
+    display: inline-block;
+}
+
+.scroll-prompt {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #8087a2;
+    bottom: 0;
+}
+
+
+@keyframes slide-in {
+  from {
+    translate: 0 2rem;
+    opacity: 0%;
+  }
+
+  to {
+    translate: 0 0;
+    opacity: 100%;
+  }
+}
+
+.content {
+    margin: auto;
+    margin-top: 2.5rem;
+    max-width: 728px;
+    display: block;
+}
+
+.content a {
+    text-decoration: none;
+    color: #8aadf4;
+}
+
+
+.content figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content figure > p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #363a4f;
+  position: fixed;
+  display: flex;
+  margin: 0 auto;
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 3rem;
+  align-items: center
+}
+
+.navbar a {
+    font-size: 1rem;
+    color: #1e2030;
+    background-color: #c6a0f6;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 50vh;
+    text-decoration: none;
+    display: inline-block;
+}
+
