@@ -7,7 +7,7 @@ This page is generated from typst. This lets me put random equations in it at wi
 I will probably also use this page for testing things out like adding images.
 
 #figure(
-  image("other/2026-07-24 07.41.07.jpg", width: "80%"),
+  image("2026-07-24 07.41.07.jpg", width: "80%"),
   caption: [
     Sony Center Berlin
   ],

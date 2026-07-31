@@ -136,7 +136,7 @@ fn main() -> Result<()> {
 
         write!(
             &mut links,
-            "<a href=\"/blog/{}\">{}</a>",
+            "<a href=\"/blog/{}/\">{}</a>",
             utf8_percent_encode(page_link, NON_ALPHANUMERIC),
             page.info.title,
         )?
