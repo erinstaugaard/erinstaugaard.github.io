@@ -13,6 +13,7 @@ use std::{
 #[derive(Serialize, Deserialize, Debug)]
 struct BlogEntryInfo {
     published: DateTime<Local>,
+    comments: Option<String>,
     title: String,
 }
 
@@ -43,6 +44,7 @@ fn main() -> Result<()> {
         "example blog entry data structure: {}",
         serde_json::to_string(&BlogEntryInfo {
             title: "example title".to_string(),
+            comments: None,
             published: chrono::Local::now(),
         })?
     );
@@ -122,12 +124,19 @@ fn main() -> Result<()> {
                 "html",
                 "--input",
                 format!("title={}", page.info.title).as_str(),
+                // "--input",
+                // format!("comments={}", page.info.title).as_str(),
                 "--root",
                 ".",
                 dbg!(&output)
                     .to_str()
                     .with_context(|| format!("failed to make {output:?} a str"))?,
             ])
+            .args(if let Some(comments) = page.info.comments {
+                vec!["--input".to_string(), format!("comments={}", comments)]
+            } else {
+                vec![]
+            })
             .status()
             .context("failed to invoke typst")?;
 
