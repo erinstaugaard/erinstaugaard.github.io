@@ -186,6 +186,7 @@ fn main() -> Result<()> {
     <title>My Website</title>\
     <link rel=\"stylesheet\" href=\"../style.css\">\
     <link rel=\"icon\" href=\"./favicon.ico\" type=\"image/x-icon\">\
+    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"Erin Staugaard's Blog\" href=\"/blog/feed\">\
   </head>\
   <body>\
     <nav class=\"navbar\">\

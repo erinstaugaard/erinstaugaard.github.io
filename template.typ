@@ -27,6 +27,7 @@
       // }
 
       html.link(rel: "stylesheet", href: "/style.css")
+      html.link(rel: "alternate", type: "application/rss+xml", title: "Erin Staugaard's Blog", href: "/blog/feed")
 
       // for ss in stylesheets {
       //     html.link(rel: "stylesheet", href: ss)
