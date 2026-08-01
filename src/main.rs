@@ -139,7 +139,7 @@ fn main() -> Result<()> {
             .context("failed to convert directory name from ostr to str")?;
 
         let link = format!(
-            "{}/",
+            "http://erinstaugaard.github.io/blog/{}/",
             utf8_percent_encode(page_link, NON_ALPHANUMERIC)
         );
 
