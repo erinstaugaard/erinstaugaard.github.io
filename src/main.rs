@@ -1,17 +1,18 @@
 use anyhow::{Context, Result};
-use chrono::NaiveDate;
+use chrono::{DateTime, Local, NaiveDate, Utc};
 use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
+use rss::{Item, Source};
 use serde::{Deserialize, Serialize};
 use std::{
     fmt::Write,
-    fs::{self, DirEntry},
+    fs::{self, DirEntry, File},
     path::PathBuf,
     process::Command,
 };
 
 #[derive(Serialize, Deserialize, Debug)]
 struct BlogEntryInfo {
-    published: NaiveDate,
+    published: DateTime<Local>,
     title: String,
 }
 
@@ -42,7 +43,7 @@ fn main() -> Result<()> {
         "example blog entry data structure: {}",
         serde_json::to_string(&BlogEntryInfo {
             title: "example title".to_string(),
-            published: NaiveDate::from_ymd_opt(2026, 7, 30).unwrap(),
+            published: chrono::Local::now(),
         })?
     );
 
@@ -75,6 +76,8 @@ fn main() -> Result<()> {
         .collect::<Vec<_>>();
 
     pages.sort_by_key(|page| page.info.published);
+
+    let mut rss_pages: Vec<rss::Item> = Vec::new();
 
     for page in pages {
         eprintln!("generating page: {:?}", page.directory);
@@ -135,6 +138,22 @@ fn main() -> Result<()> {
             .to_str()
             .context("failed to convert directory name from ostr to str")?;
 
+        let link = format!(
+            "erinstaugaard.github.io/blog/{}/",
+            utf8_percent_encode(page_link, NON_ALPHANUMERIC)
+        );
+
+        rss_pages.push(Item {
+            title: Some(page.info.title.clone()),
+            link: Some(link),
+            pub_date: Some(page.info.published.to_rfc2822()),
+            source: Some(Source {
+                url: "erinstaugaard.github.io/blog/feed".to_string(),
+                title: Some("Erin Staugaard's blog".to_string()),
+            }),
+            ..Default::default()
+        });
+
         write!(
             &mut links,
             "<a href=\"/blog/{}/\">{}</a>",
@@ -142,6 +161,18 @@ fn main() -> Result<()> {
             page.info.title,
         )?
     }
+
+    let rss = rss::ChannelBuilder::default()
+        .link("erinstaugaard.github.io")
+        .description("My personal blog that I'm probably going to rarely if ever use")
+        .language(Some("English".to_string()))
+        .ttl(Some("1440".to_string()))
+        .items(rss_pages)
+        .build();
+
+    let rss_file = File::create("output/blog/feed")?;
+
+    rss.write_to(rss_file)?;
 
     let blog_page = format!(
         "
