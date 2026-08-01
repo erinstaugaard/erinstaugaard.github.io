@@ -168,6 +168,7 @@ fn main() -> Result<()> {
         .language(Some("English".to_string()))
         .ttl(Some("1440".to_string()))
         .items(rss_pages)
+        .title("Erin Staugaard's Blog")
         .build();
 
     let rss_file = File::create("output/blog/feed")?;
