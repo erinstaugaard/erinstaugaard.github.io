@@ -15,7 +15,3 @@ I will probably also use this page for testing things out like adding images.
 
 Or maybe in the future other things idk.
 
-Things I want to add to this in the future.
-- rss feed
-- Some other stuff that I am forgetting right now
-
