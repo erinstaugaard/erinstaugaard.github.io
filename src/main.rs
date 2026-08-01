@@ -1,5 +1,5 @@
 use anyhow::{Context, Result};
-use chrono::{DateTime, Local, NaiveDate, Utc};
+use chrono::{DateTime, Local};
 use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
 use rss::{Item, Source};
 use serde::{Deserialize, Serialize};
@@ -139,7 +139,7 @@ fn main() -> Result<()> {
             .context("failed to convert directory name from ostr to str")?;
 
         let link = format!(
-            "erinstaugaard.github.io/blog/{}/",
+            "{}/",
             utf8_percent_encode(page_link, NON_ALPHANUMERIC)
         );
 
