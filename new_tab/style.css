@@ -1,0 +1,85 @@
+
+body {
+    margin: 0;
+    background: #24273a;
+    font-family: "Fira Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.page {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+}
+
+.links {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-rows: repeat(4, 1fr);
+    grid-auto-flow: column;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.time {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 1 / 1;
+	background: #363a4f;
+	color: #cad3f5;
+	border-radius: 2rem;
+	filter: drop-shadow(5px 5px #181926)
+}
+
+.links a {
+	padding: 0.5rem;
+	text-decoration: none;
+	text-align: center;
+	align-content: center;
+	background: #363a4f;
+	border-radius: 2rem;
+	filter: drop-shadow(5px 5px #181926)
+}
+
+.links a:nth-child(8n+0){color: #f5bde6}
+.links a:nth-child(8n+1){color: #ed8796}
+.links a:nth-child(8n+2){color: #eed49f}
+.links a:nth-child(8n+3){color: #f5a97f}
+.links a:nth-child(8n+4){color: #a6da95}
+.links a:nth-child(8n+5){color: #7dc4e4}
+.links a:nth-child(8n+6){color: #c6a0f6}
+.links a:nth-child(8n+7){color: #91d7e3}
+
+
+#search-input {
+	font-size: inherit;
+	border: none;
+	background: #363a4f;
+	color: #cad3f5;
+	border-radius: 100vh;
+	padding: 0.5rem;
+	padding-left: 1rem;
+	width: calc(100% - 1.5rem);
+	filter: drop-shadow(5px 5px #181926)
+}
+
+#search-input:focus {
+    outline: none;
+
+}
+
+#search {
+    grid-column: 1 / 3;
+    grid-row: 2;
+}

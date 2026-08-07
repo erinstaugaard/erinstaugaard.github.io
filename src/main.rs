@@ -55,6 +55,10 @@ fn main() -> Result<()> {
     fs::copy("index.html", "output/index.html")?;
     fs::copy("style.css", "output/style.css")?;
     fs::create_dir_all("output/blog")?;
+    fs::create_dir_all("output/new_tab")?;
+    fs::copy("new_tab/index.html", "output/new_tab/index.html")?;
+    fs::copy("new_tab/style.css", "output/new_tab/style.css")?;
+    fs::copy("new_tab/index.js", "output/new_tab/index.js")?;
 
     eprintln!("reading blog directory");
 
