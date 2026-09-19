@@ -121,10 +121,42 @@ let search_input = document.getElementById("search-input");
 let search = document.getElementById("search");
 
 search.addEventListener("submit", (event) => {
-    console.log(`https://duckduckgo.com/?q=${encodeURIComponent(search_input.value)}&ia=web`);
-    window.location = `https://duckduckgo.com/?q=${encodeURIComponent(search_input.value)}&ia=web`;
-    event.preventDefault();
+    navigate_to(`https://duckduckgo.com/?q=${encodeURIComponent(search_input.value)}&ia=web`)
 })
 
+function navigate_to(link) {
+    console.log(link);
+    window.location = link;
+    event.preventDefault();
+}
 
-
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey) {
+        switch(e.key) {
+          case '1':
+            navigate_to("https://github.com/")
+            break;
+          case '2':
+            navigate_to("https://cengage.com")
+            break;
+          case '3':
+            navigate_to("https://verbformen.com")
+            break;
+          case '4':
+            navigate_to("https://dict.cc")
+            break;
+          case '5':
+            navigate_to("https://search.nixos.org/packages")
+            break;
+          case '6':
+            navigate_to("https://moodle.haverford.edu")
+            break;
+          case '7':
+            navigate_to("https://moodle.brynmawr.edu")
+            break;
+          case '8':
+            navigate_to("https://vbm.brynmawr.edu")
+            break;
+          default:
+        }     
+    }});
