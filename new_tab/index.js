@@ -146,7 +146,7 @@ document.addEventListener("keydown", function (e) {
             navigate_to("https://dict.cc")
             break;
           case '5':
-            navigate_to("https://search.nixos.org/packages")
+            navigate_to("https://www.inoreader.com/all_articles")
             break;
           case '6':
             navigate_to("https://moodle.haverford.edu")
