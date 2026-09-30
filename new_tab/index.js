@@ -54,7 +54,7 @@ function showTime() {
 
         console.log(hour);
 
-        let angle = hour/12.0 * Math.PI * 2;
+        let angle = (hour - 4)/12.0 * Math.PI * 2;
 
         let x = Math.sin(angle);
         let y = -Math.cos(angle);
