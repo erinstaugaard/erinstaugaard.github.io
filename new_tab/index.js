@@ -121,7 +121,7 @@ let search_input = document.getElementById("search-input");
 let search = document.getElementById("search");
 
 search.addEventListener("submit", (event) => {
-    navigate_to(`https://duckduckgo.com/?q=${encodeURIComponent(search_input.value)}&ia=web`)
+    navigate_to(`https://noai.duckduckgo.com/?q=${encodeURIComponent(search_input.value)}&ia=web`)
 })
 
 function navigate_to(link) {
